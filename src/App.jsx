@@ -8,6 +8,7 @@ import CreatePost from './pages/CreatePost';
 import UpdatePost from './pages/UpdatePost';
 import Navbar from './components/shared/Navbar';
 import Profile from './pages/Profile';
+import Settings from './pages/Setting';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/create" element={<CreatePost />} />
             <Route path="/update/:id" element={<UpdatePost />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>
       </div>
