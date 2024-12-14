@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import CreatePost from './pages/CreatePost';
 import UpdatePost from './pages/UpdatePost';
 import Navbar from './components/shared/Navbar';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/create" element={<CreatePost />} />
             <Route path="/update/:id" element={<UpdatePost />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
       </div>
