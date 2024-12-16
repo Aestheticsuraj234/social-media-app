@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 
-export default function SignUp() {
-  const { signUp } = useAuth();
+export default function SignIn() {
+  const { signIn } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e) {
@@ -16,13 +16,12 @@ export default function SignUp() {
     const formData = new FormData(e.target);
     const email = formData.get('email');
     const password = formData.get('password');
-    const name = formData.get('name');
 
     try {
-      await signUp(email, password, name);
-      toast.success('Account created successfully');
+      await signIn(email, password);
+      toast('Signed in successfully');
     } catch (error) {
-      toast.error('Failed to create account');
+      toast('Failed to sign in');
     } finally {
       setIsLoading(false);
     }
@@ -32,22 +31,13 @@ export default function SignUp() {
     <div className="flex min-h-screen items-center justify-center">
       <div className="w-full max-w-sm space-y-8 p-8">
         <div className="text-center">
-          <h2 className="text-2xl font-bold">Create an account</h2>
+          <h2 className="text-2xl font-bold">Welcome back</h2>
           <p className="text-sm text-muted-foreground">
-            Sign up to get started
+            Sign in to your account
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <Input
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Name"
-              required
-            />
-          </div>
           <div>
             <Input
               id="email"
@@ -71,14 +61,14 @@ export default function SignUp() {
             className="w-full"
             disabled={isLoading}
           >
-            {isLoading ? 'Creating account...' : 'Sign up'}
+            {isLoading ? 'Signing in...' : 'Sign in'}
           </Button>
         </form>
 
         <p className="text-center text-sm">
-          Already have an account?{' '}
-          <Link to="/sign-in" className="text-primary hover:underline">
-            Sign in
+          Don't have an account?{' '}
+          <Link to="/sign-up" className="text-primary hover:underline">
+            Sign up
           </Link>
         </p>
       </div>

@@ -3,8 +3,13 @@ import { Home, PlusSquare, User, LogOut, Settings } from 'lucide-react';
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { useAuth } from '../../context/AuthContext';
 
 const Sidebar = () => {
+  const { signOut , user} = useAuth();
+  const handleSignOut = async ()=>{
+    await signOut()
+  }
   return (
     <div className="hidden md:flex h-screen w-64 flex-col bg-card text-card-foreground border-r">
       <div className="p-4">
@@ -15,8 +20,8 @@ const Sidebar = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-medium">John Doe</p>
-            <p className="text-sm text-muted-foreground">@johndoe</p>
+            <p className="font-medium">{user?.name}</p>
+            <p className="text-sm text-muted-foreground">@{user?.email}</p>
           </div>
         </div>
       </div>
@@ -49,7 +54,7 @@ const Sidebar = () => {
         </nav>
       </ScrollArea>
       <div className="p-4 border-t">
-        <Button variant="outline" className="w-full">
+        <Button onClick={handleSignOut} variant="outline" className="w-full">
           <LogOut className="mr-2 h-4 w-4" />
           Logout
         </Button>
