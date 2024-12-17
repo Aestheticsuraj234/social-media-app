@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Sidebar from "./components/shared/Sidebar";
 import Feed from "./pages/Feed";
 
-import Signup from "./pages/Signup";
+
 import CreatePost from "./pages/CreatePost";
 import UpdatePost from "./pages/UpdatePost";
 import Navbar from "./components/shared/Navbar";
@@ -12,6 +12,7 @@ import Settings from "./pages/Setting";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
               <Routes>
                 {/* Public routes */}
                 <Route path="/sign-in" element={<SignIn />} />
-                <Route path="/sign-up" element={<Signup />} />
+                <Route path="/sign-up" element={<SignUp />} />
 
                 {/* Protected routes */}
                 <Route
